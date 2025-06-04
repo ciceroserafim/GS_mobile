@@ -6,7 +6,7 @@ export default function Quemsomos() {
  const navigation = useNavigation();
  return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.titulo}>🛡️ Sobre Nós – Caution Event</Text>
+      <Text style={styles.titulo}>🛡️ Sobre Nós – SafeZone</Text>
 
       <Text style={styles.texto}>
         Na era dos eventos climáticos extremos, acreditamos que a informação rápida, confiável e acessível pode salvar vidas.
