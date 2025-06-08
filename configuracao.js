@@ -8,19 +8,32 @@ export default function Configuracao() {
 
   const handleSignOut = () => {
     console.log("Usuário saiu da conta");
-    // navigation.replace("Login"); // descomente se quiser redirecionar
+    
   };
 
   const handleDeleteAccount = () => {
-    Alert.alert(
-      "Excluir Conta",
-      "Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.",
-      [
-        { text: "Cancelar", style: "cancel" },
-        { text: "Excluir", style: "destructive", onPress: () => console.log("Conta excluída") }
-      ]
-    );
-  };
+  Alert.alert(
+    "Excluir Conta",
+    "Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+    [
+      { text: "Cancelar", style: "cancel" },
+      {
+        text: "Excluir",
+        style: "destructive",
+        onPress: () => {
+          console.log("Conta excluída");
+          
+          // Redireciona para a tela de Cadastro e limpa o histórico de navegação
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "Cadastro" }] 
+          });
+        }
+      }
+    ]
+  );
+};
+
 
   return (
     <View style={styles.container}>

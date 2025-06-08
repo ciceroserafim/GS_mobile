@@ -49,7 +49,7 @@ export default function Login() {
           Ainda não tem conta?{' '}
           <Text
             style={styles.link}
-            //joga direto para tela de menu
+            //joga direto para tela de cadastro
             onPress={() => navigation.navigate('Cadastro')}
           >
             Cadastre-se
