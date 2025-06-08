@@ -11,6 +11,7 @@ import Quemsomos from './quemsomos';
 import FiltrosDesastres from './FiltrosDesastres';
 import MapaDesastres from './MapaDesastres';
 import Dicas from './dicas';
+import Configuracao from './configuracao';
 
 
 const Stack = createNativeStackNavigator();
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Menu"> 
+      <Stack.Navigator initialRouteName="Cadastro"> 
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Menu" component={Menu} />
@@ -61,6 +62,7 @@ export default function App() {
          <Stack.Screen name="FiltrosDesastres" component={FiltrosDesastres} />
          <Stack.Screen name="MapaDesastres" component={MapaDesastres} />
          <Stack.Screen name="Dicas" component={Dicas} />
+         <Stack.Screen name="Configuracao" component={Configuracao} />
       </Stack.Navigator>
     </NavigationContainer>
   );

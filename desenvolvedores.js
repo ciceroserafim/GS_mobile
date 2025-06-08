@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 export default function Desenvolvedores() {
   const membros = [
     {
       nome: 'Cícero Gabriel Oliveira Serafim',
       rm: '556996',
-      funcao: 'Desenvolvedor Frontend',
+      funcao: 'Desenvolvedor de Apps Mobile | Iot',
       imagem: '',
     },
     {
@@ -17,18 +16,25 @@ export default function Desenvolvedores() {
       imagem: '',
     },
     {
-      nome: 'Alice',
-      rm: '########',
-      funcao: 'UX/UI Designer',
+      nome: 'Alice Teixeira Caldeira',
+      rm: '556293',
+      funcao: 'UX/UI Designer | PL/SQl',
       imagem: '',
     },
   ];
 
-  
-return (
+  return (
     <ScrollView style={styles.container}>
-      <Text style={styles.titulo}>Equipe de Desenvolvimento</Text>
+      {/* Título com imagem */}
+      <View style={styles.header}>
+        <Image
+          source={require('./assets/pessoas.png')}
+          style={{ width: 50, height: 50, marginRight: 10 }}
+        />
+        <Text style={styles.titulo}>Equipe de Desenvolvimento</Text>
+      </View>
 
+      {/* Cartões dos membros */}
       {membros.map((membro, index) => (
         <View key={index} style={styles.card}>
           <Image source={{ uri: membro.imagem }} style={styles.avatar} />
@@ -50,12 +56,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 50,
   },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 24,
+  },
   titulo: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#fff',
-    textAlign: 'center',
-    marginBottom: 24,
   },
   card: {
     flexDirection: 'row',
@@ -85,10 +95,9 @@ const styles = StyleSheet.create({
     color: '#ccc',
     marginTop: 4,
   },
-  rm:{
- fontSize: 10,
+  rm: {
+    fontSize: 10,
     color: '#ccc',
-    marginTop: 4
-
-  }
+    marginTop: 4,
+  },
 });

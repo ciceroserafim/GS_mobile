@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f4ff', // fundo azul claro
+    backgroundColor: '#f0f4ff', 
     paddingVertical: 40,
     paddingHorizontal: 20,
   },
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 26,
     fontWeight: 'bold',
-    color: '#0a1d40', // azul escuro
+    color: '#0a1d40', 
     textAlign: 'center',
     marginBottom: 20,
   },

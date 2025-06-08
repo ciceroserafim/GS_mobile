@@ -17,13 +17,7 @@ export default function Menu() {
 
         <Text style={styles.titulo}>Menu Principal</Text>
 
-        <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Cadastro')}>
-          <Text style={styles.textoBotao}>Cadastro</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Login')}>
-          <Text style={styles.textoBotao}>Login</Text>
-        </TouchableOpacity>
+        
 
         <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Desenvolvedores')}>
           <Text style={styles.textoBotao}>Desenvolvedores</Text>
@@ -43,6 +37,10 @@ export default function Menu() {
 
         <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('MapaDesastres')}>
           <Text style={styles.textoBotao}>Mapa de Desastres</Text>
+        </TouchableOpacity>
+
+         <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('Configuracao')}>
+          <Text style={styles.textoBotao}>Configuracao</Text>
         </TouchableOpacity>
 
       </View>
