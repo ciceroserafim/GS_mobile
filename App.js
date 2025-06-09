@@ -12,6 +12,7 @@ import FiltrosDesastres from './FiltrosDesastres';
 import MapaDesastres from './MapaDesastres';
 import Dicas from './dicas';
 import Configuracao from './configuracao';
+import CadastroAlerta from './CadastroAlerta';
 
 
 const Stack = createNativeStackNavigator();
@@ -63,6 +64,7 @@ export default function App() {
          <Stack.Screen name="MapaDesastres" component={MapaDesastres} />
          <Stack.Screen name="Dicas" component={Dicas} />
          <Stack.Screen name="Configuracao" component={Configuracao} />
+         <Stack.Screen name="CadastroAlerta" component={CadastroAlerta} />
       </Stack.Navigator>
     </NavigationContainer>
   );

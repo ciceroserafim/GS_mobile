@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,20 +6,28 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-
-const alertasMock = [
-  { id: '1', tipo: 'enchente', local: 'São Paulo' },
-  { id: '2', tipo: 'terremoto', local: 'Chile' },
-  { id: '3', tipo: 'calor extremo', local: 'Rio de Janeiro' },
-  { id: '4', tipo: 'enchente', local: 'Recife' },
-];
+import { listarAlertas } from './services/AlertaService'; 
 
 const FiltrosDesastres = () => {
   const [filtro, setFiltro] = useState(null);
+  const [alertas, setAlertas] = useState([]);
+
+  useEffect(() => {
+    carregarAlertas();
+  }, []);
+
+  const carregarAlertas = async () => {
+    try {
+      const dados = await listarAlertas();
+      setAlertas(dados);
+    } catch (error) {
+      console.error('Erro ao carregar alertas:', error);
+    }
+  };
 
   const alertasFiltrados = filtro
-    ? alertasMock.filter(alerta => alerta.tipo === filtro)
-    : alertasMock;
+    ? alertas.filter(alerta => alerta.tipoDesastre.toLowerCase() === filtro)
+    : alertas;
 
   const botoes = [
     { label: 'Todos', valor: null },
@@ -49,72 +57,18 @@ const FiltrosDesastres = () => {
 
       <FlatList
         data={alertasFiltrados}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.alerta}>
-            <Text style={styles.tipo}>{item.tipo.toUpperCase()}</Text>
-            <Text style={styles.local}>Local: {item.local}</Text>
+            <Text style={styles.tipo}>{item.tipoDesastre.toUpperCase()}</Text>
+            <Text style={styles.local}>
+              Local: {item.localizacao?.cidade ?? 'Não informado'}
+            </Text>
           </View>
         )}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e0f2ff',
-    padding: 20,
-  },
-  titulo: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: '#003366',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  filtros: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    marginBottom: 20,
-  },
-  botao: {
-    backgroundColor: '#0077cc',
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderRadius: 20,
-    margin: 5,
-  },
-  botaoSelecionado: {
-    backgroundColor: '#005fa3',
-  },
-  textoBotao: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-  alerta: {
-    backgroundColor: '#ffffff',
-    padding: 15,
-    borderRadius: 12,
-    marginBottom: 15,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  tipo: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#cc0000',
-  },
-  local: {
-    fontSize: 14,
-    color: '#333',
-    marginTop: 4,
-  },
-});
 
 export default FiltrosDesastres;

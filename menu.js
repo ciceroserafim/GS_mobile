@@ -43,6 +43,11 @@ export default function Menu() {
           <Text style={styles.textoBotao}>Configuracao</Text>
         </TouchableOpacity>
 
+
+         <TouchableOpacity style={styles.botao} onPress={() => navigation.navigate('CadastroAlerta')}>
+          <Text style={styles.textoBotao}>Cadastro para alerta</Text>
+        </TouchableOpacity>
+
       </View>
     </ScrollView>
   );
